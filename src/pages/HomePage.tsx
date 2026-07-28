@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Helmet } from 'react-helmet-async';
 import { 
   ArrowRight, CheckCircle2, Search, Zap, Layout, ShoppingBag, Share2, Globe, 
   TrendingUp, Users, Star, BarChart3, ShieldCheck, Database, Code2, Rocket, 
@@ -10,6 +9,7 @@ import {
 import { Link } from 'react-router-dom';
 import { SERVICES } from '../constants';
 import { CmsBlockRenderer } from '../components/CmsBlockRenderer';
+import { SEO, Breadcrumbs } from '../lib/seo';
 
 const icons: Record<string, any> = { 
   Search, 
@@ -64,33 +64,13 @@ export const HomePage = () => {
 
   return (
     <div className="w-full bg-[#080808] text-white selection:bg-[#FF6B00] selection:text-white font-sans overflow-x-hidden">
-      <Helmet>
-        <title>Preet Web Vision | Next-Gen AI & Web Performance Agency</title>
-        <meta name="description" content="A luxury digital growth agency built for industry leaders. We specialize in custom high-speed web design, technical SEO, and conversion-engineered eCommerce architectures." />
-        <meta name="keywords" content="digital agency, web development, SEO agency Delhi NCR, Shopify agency, AI automation, high conversion design" />
-        <link rel="canonical" href="https://preetwebvision.com/" />
-        <meta property="og:title" content="Preet Web Vision | Next-Gen AI & Web Agency" />
-        <meta property="og:description" content="Scaling revenue and market authority through technical engineering and data-guided growth." />
-        <meta property="og:image" content="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://preetwebvision.com/" />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "Preet Web Vision",
-            "url": "https://preetwebvision.com",
-            "logo": "https://preetwebvision.com/images/preet_founder.png",
-            "description": "High-performance WordPress development and bespoke digital marketing & SEO strategies.",
-            "sameAs": [
-              "https://twitter.com/preetwebvision",
-              "https://linkedin.com/company/preetwebvision"
-            ]
-          })}
-        </script>
-      </Helmet>
+      <SEO
+        title="Next-Gen AI & Web Performance Agency"
+        description="A premium digital growth agency specializing in custom high-speed web design, technical SEO, AI automation, and conversion-engineered eCommerce architectures. Based in Gurgaon, serving clients worldwide."
+        canonical="/"
+        keywords="digital agency, web development, SEO agency Delhi NCR, Shopify agency, AI automation, high conversion design, digital marketing agency Gurgaon"
+        breadcrumbs={[]}
+      />
 
       {/* =========================================
           HERO SECTION
