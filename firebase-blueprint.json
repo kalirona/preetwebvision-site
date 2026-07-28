@@ -1,0 +1,102 @@
+{
+  "entities": {
+    "Lead": {
+      "title": "Lead",
+      "description": "Inbound inquiry from potential clients",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Full name of the contact" },
+        "email": { "type": "string", "format": "email", "description": "Email address" },
+        "phone": { "type": "string", "description": "Phone number" },
+        "website_url": { "type": "string", "description": "Website URL" },
+        "service_interest": { "type": "string", "description": "Service they are interested in" },
+        "message": { "type": "string", "description": "Details about the project" },
+        "source": { "type": "string", "description": "Source page or form name" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "status": { "type": "string", "enum": ["NEW", "CONTACTED", "PROPOSAL", "CONVERTED", "CLOSED"] }
+      },
+      "required": ["name", "email", "status"]
+    },
+    "SEOSetting": {
+      "title": "SEO Setting",
+      "description": "Meta tags and SEO config for specific pages",
+      "type": "object",
+      "properties": {
+        "pagePath": { "type": "string", "description": "The URL path e.g. /services/wordpress" },
+        "title": { "type": "string", "description": "Meta title" },
+        "description": { "type": "string", "description": "Meta description" },
+        "schemaMarkup": { "type": "string", "description": "JSON-LD schema markup" }
+      },
+      "required": ["pagePath", "title"]
+    },
+    "Service": {
+      "title": "Service",
+      "description": "Information about an agency service",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "slug": { "type": "string" },
+        "description": { "type": "string" },
+        "content": { "type": "string", "description": "Detailed markdown content" },
+        "faqs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "q": { "type": "string" },
+              "a": { "type": "string" }
+            }
+          }
+        },
+        "status": { "type": "string", "enum": ["ACTIVE", "DRAFT"] }
+      },
+      "required": ["title", "slug", "status"]
+    },
+    "AffiliateTool": {
+      "title": "Affiliate Tool",
+      "description": "Recommended software with affiliate links",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "category": { "type": "string" },
+        "description": { "type": "string" },
+        "link": { "type": "string" },
+        "image": { "type": "string" }
+      },
+      "required": ["name", "link"]
+    },
+    "Admin": {
+      "title": "Admin",
+      "description": "Authorized admin users",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string", "format": "email" },
+        "role": { "type": "string", "enum": ["Super Admin", "Admin", "Content Manager", "SEO Manager"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["email", "role"]
+    }
+  },
+  "firestore": {
+    "leads": {
+      "schema": "Lead",
+      "description": "Collection of all client leads"
+    },
+    "seoSettings": {
+      "schema": "SEOSetting",
+      "description": "Global SEO configuration per page"
+    },
+    "services": {
+      "schema": "Service",
+      "description": "Agency services content"
+    },
+    "affiliateTools": {
+      "schema": "AffiliateTool",
+      "description": "List of recommended tools"
+    },
+    "admins": {
+       "schema": "Admin",
+       "description": "List of users with admin access"
+    }
+  }
+}

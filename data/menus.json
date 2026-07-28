@@ -1,0 +1,44 @@
+[
+  {
+    "id": "menu-1",
+    "name": "Home",
+    "path": "/",
+    "order": 1
+  },
+  {
+    "id": "menu-2",
+    "name": "Services",
+    "path": "/services",
+    "order": 2
+  },
+  {
+    "id": "menu-5",
+    "name": "About",
+    "path": "/about",
+    "order": 3
+  },
+  {
+    "id": "menu-3",
+    "name": "Portfolio",
+    "path": "/case-studies",
+    "order": 4
+  },
+  {
+    "id": "menu-4",
+    "name": "Blog",
+    "path": "/blog",
+    "order": 5
+  },
+  {
+    "id": "menu-6",
+    "name": "Resources",
+    "path": "/tools",
+    "order": 6
+  },
+  {
+    "id": "menu-7",
+    "name": "Contact Now",
+    "path": "/contact",
+    "order": 7
+  }
+]

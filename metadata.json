@@ -1,0 +1,6 @@
+{
+  "name": "Preet Web Vision",
+  "description": "A high-performance digital marketing agency website with integrated CMS, SEO-optimized content, and lead generation system.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

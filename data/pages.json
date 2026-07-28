@@ -1,0 +1,11 @@
+[
+  {
+    "id": "case-studies",
+    "slug": "case-studies",
+    "title": "Case Studies CMS",
+    "route": "/portfolio",
+    "status": "PUBLISHED",
+    "body": "Welcome to our live portfolio case studies. Here we highlight client growth blueprints, search engine strategies, and performance optimizations. This page is managed dynamically through our CMS controller.",
+    "updatedAt": "2026-07-02T02:50:00Z"
+  }
+]

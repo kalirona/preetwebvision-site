@@ -1,0 +1,30 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Global safety net
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function isValidLead(data) {
+      return data.keys().hasAll(['name', 'email', 'service_interest']) &&
+             data.name is string && data.name.size() <= 100 &&
+             data.email is string && data.email.size() <= 100 &&
+             data.service_interest is string;
+    }
+
+    match /leads/{leadId} {
+      allow create: if isValidLead(request.resource.data);
+      allow get: if false; // Only admin via backend/dashboard should read
+    }
+
+    match /posts/{postId} {
+      allow read: if true; // Public blog posts
+      allow write: if false; // Only admin via CMS
+    }
+  }
+}
