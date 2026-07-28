@@ -5,7 +5,7 @@ import {
   ArrowRight, CheckCircle2, Search, Zap, Layout, ShoppingBag, Share2, Globe, 
   TrendingUp, Users, Star, BarChart3, ShieldCheck, Database, Code2, Rocket, 
   Award, ExternalLink, HelpCircle, ShoppingBasket, FileCode, RefreshCw, 
-  MousePointer2, Sparkles, Activity, Layers, Terminal
+  MousePointer2, Sparkles, Activity, Layers, Terminal, ChevronDown
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { SERVICES } from '../constants';
@@ -26,6 +26,7 @@ const icons: Record<string, any> = {
 export const HomePage = () => {
   const [cmsPage, setCmsPage] = React.useState<any | null>(null);
   const [loadingCms, setLoadingCms] = React.useState(true);
+  const [openFaq, setOpenFaq] = React.useState<number | null>(0);
 
   React.useEffect(() => {
     fetch('/api/pages/home')
@@ -467,6 +468,309 @@ export const HomePage = () => {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================
+          INDUSTRIES WE SERVE
+          ========================================= */}
+      <section className="py-28 bg-[#121212] border-t border-white/10 relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-[#FF6B00]/5 rounded-full blur-[160px] pointer-events-none" />
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-[11px] font-mono font-bold text-[#FFB347] uppercase tracking-[0.3em] block mb-3">
+              INDUSTRIES WE SERVE
+            </span>
+            <h2 className="font-display text-3xl sm:text-5xl font-black text-white uppercase tracking-tight leading-none mb-6">
+              EXPERTISE ACROSS <span className="text-gradient-orange">EVERY SECTOR</span>
+            </h2>
+            <p className="text-[#BFBFBF] text-base leading-relaxed">
+              Our technical solutions are tailored to the unique challenges of each industry we serve.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            {[
+              { name: 'E-Commerce & Retail', icon: '🛒' },
+              { name: 'Healthcare & Medical', icon: '🏥' },
+              { name: 'Real Estate & Property', icon: '🏢' },
+              { name: 'Education & E-Learning', icon: '📚' },
+              { name: 'Financial Services', icon: '💰' },
+              { name: 'Technology & SaaS', icon: '💻' },
+              { name: 'Hospitality & Travel', icon: '✈️' },
+              { name: 'Legal & Professional', icon: '⚖️' },
+              { name: 'Manufacturing & Industrial', icon: '🏭' },
+              { name: 'Food & Beverage', icon: '🍽️' },
+              { name: 'Automotive & Transport', icon: '🚗' },
+              { name: 'Non-Profit & Education', icon: '🎓' }
+            ].map((industry, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.05, duration: 0.4 }}
+                className="p-5 rounded-2xl bg-[#161616] border border-white/10 hover:border-[#FF6B00]/40 transition-all text-center group"
+              >
+                <span className="text-3xl block mb-2">{industry.icon}</span>
+                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#BFBFBF] group-hover:text-[#FF6B00] transition-colors">
+                  {industry.name}
+                </span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================
+          OUR PROCESS
+          ========================================= */}
+      <section className="py-28 bg-[#080808] relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-[11px] font-mono font-bold text-[#FFB347] uppercase tracking-[0.3em] block mb-3">
+              OUR PROCESS
+            </span>
+            <h2 className="font-display text-3xl sm:text-5xl font-black text-white uppercase tracking-tight leading-none mb-6">
+              HOW WE <span className="text-gradient-orange">DELIVER RESULTS</span>
+            </h2>
+            <p className="text-[#BFBFBF] text-base leading-relaxed">
+              A proven methodology that ensures every project delivers measurable business impact.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { step: '01', title: 'Discovery & Audit', desc: 'Deep analysis of your business goals, technical stack, market position, and growth opportunities.' },
+              { step: '02', title: 'Strategy & Architecture', desc: 'Custom blueprint development with clear milestones, KPIs, and technical specifications.' },
+              { step: '03', title: 'Execution & Development', desc: 'Agile development with weekly sprints, continuous testing, and transparent progress reporting.' },
+              { step: '04', title: 'Launch & Optimization', desc: 'Production deployment with performance monitoring, A/B testing, and iterative improvements.' }
+            ].map((phase, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1, duration: 0.5 }}
+                className="p-8 rounded-2xl bg-[#161616] border border-white/10 hover:border-[#FF6B00]/50 transition-all relative"
+              >
+                <span className="font-display text-5xl font-black text-[#FF6B00]/20 block mb-4">{phase.step}</span>
+                <h3 className="font-display text-xl font-bold text-white uppercase mb-3">{phase.title}</h3>
+                <p className="text-[#BFBFBF] text-sm leading-relaxed">{phase.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================
+          TECHNOLOGIES WE USE
+          ========================================= */}
+      <section className="py-28 bg-[#121212] border-t border-white/10 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-[11px] font-mono font-bold text-[#FFB347] uppercase tracking-[0.3em] block mb-3">
+              TECHNOLOGY STACK
+            </span>
+            <h2 className="font-display text-3xl sm:text-5xl font-black text-white uppercase tracking-tight leading-none mb-6">
+              MODERN <span className="text-gradient-orange">TECH ARCHITECTURE</span>
+            </h2>
+            <p className="text-[#BFBFBF] text-base leading-relaxed">
+              We leverage cutting-edge technologies to build fast, secure, and scalable digital solutions.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            {[
+              { name: 'React / Next.js', cat: 'Frontend' },
+              { name: 'TypeScript', cat: 'Language' },
+              { name: 'Node.js', cat: 'Backend' },
+              { name: 'WordPress', cat: 'CMS' },
+              { name: 'Shopify', cat: 'E-Commerce' },
+              { name: 'Tailwind CSS', cat: 'Styling' },
+              { name: 'PostgreSQL', cat: 'Database' },
+              { name: 'MongoDB', cat: 'Database' },
+              { name: 'Firebase', cat: 'Backend' },
+              { name: 'AWS / GCP', cat: 'Cloud' },
+              { name: 'Docker', cat: 'DevOps' },
+              { name: 'GitHub Actions', cat: 'CI/CD' }
+            ].map((tech, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.03, duration: 0.3 }}
+                className="p-5 rounded-2xl bg-[#161616] border border-white/10 hover:border-[#FF6B00]/40 transition-all text-center group"
+              >
+                <span className="text-[10px] font-mono font-bold text-[#FFB347] uppercase tracking-wider block mb-1">{tech.cat}</span>
+                <span className="text-xs font-bold text-white group-hover:text-[#FF6B00] transition-colors">{tech.name}</span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================
+          FAQ SECTION
+          ========================================= */}
+      <section className="py-28 bg-[#080808] relative overflow-hidden">
+        <div className="max-w-4xl mx-auto px-6 relative z-10">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-[11px] font-mono font-bold text-[#FFB347] uppercase tracking-[0.3em] block mb-3">
+              FREQUENTLY ASKED QUESTIONS
+            </span>
+            <h2 className="font-display text-3xl sm:text-5xl font-black text-white uppercase tracking-tight leading-none mb-6">
+              COMMON <span className="text-gradient-orange">INQUIRIES</span>
+            </h2>
+          </div>
+
+          <div className="space-y-4">
+            {[
+              { q: 'How long does it take to see results from SEO?', a: 'Initial improvements can be seen within 4-6 weeks, but significant organic growth typically compounds over 3-6 months as search engines recognize your authority.' },
+              { q: 'What makes Preet Web Vision different from other agencies?', a: 'We are code-first engineers, not template users. Every website is built from scratch with clean code, sub-second load speeds, and SEO-native architecture. We don\'t use bloated page builders or automated link schemes.' },
+              { q: 'Do you offer ongoing support after project completion?', a: 'Yes. We provide comprehensive maintenance plans including security updates, performance monitoring, content updates, and priority technical support.' },
+              { q: 'Can you work with our existing website or do we need a rebuild?', a: 'We can optimize existing sites or recommend a rebuild if the current architecture limits performance. We always provide a detailed audit before recommending the best path forward.' },
+              { q: 'What is your pricing model?', a: 'We offer transparent monthly retainers and project-based pricing. Every engagement starts with a free strategy audit to define scope and investment.' }
+            ].map((faq, idx) => {
+              const isOpen = openFaq === idx;
+              return (
+                <div key={idx} className="rounded-2xl bg-[#121212] border border-white/10 overflow-hidden transition-all">
+                  <button
+                    onClick={() => setOpenFaq(isOpen ? null : idx)}
+                    className="w-full p-6 text-left flex items-center justify-between gap-4 cursor-pointer"
+                  >
+                    <span className="font-display text-sm font-bold uppercase text-white">{faq.q}</span>
+                    <ChevronDown size={18} className={`text-[#FF6B00] transition-transform duration-300 shrink-0 ${isOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  {isOpen && (
+                    <div className="px-6 pb-6 pt-0 text-xs text-[#BFBFBF] leading-relaxed border-t border-white/5">
+                      <p className="pt-4">{faq.a}</p>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================
+          BLOG PREVIEW
+          ========================================= */}
+      <section className="py-28 bg-[#121212] border-t border-white/10 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+            <div>
+              <span className="text-[11px] font-mono font-bold text-[#FFB347] uppercase tracking-[0.3em] block mb-3">
+                GROWTH JOURNAL
+              </span>
+              <h2 className="font-display text-3xl sm:text-5xl font-black text-white uppercase tracking-tight leading-none">
+                LATEST <span className="text-gradient-orange">INSIGHTS</span>
+              </h2>
+            </div>
+            <Link to="/blog" className="text-xs font-mono font-bold uppercase tracking-widest text-[#FF6B00] hover:text-[#FF9D00] transition-colors inline-flex items-center gap-2">
+              <span>View All Articles</span>
+              <ArrowRight size={14} />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {[
+              {
+                title: 'WordPress Technical SEO: Ultimate Deep-Dive Guide',
+                excerpt: 'Learn the latest technical SEO and architecture guidelines to make your site rank higher and load faster in the AI search era.',
+                category: 'SEO & Technical Growth',
+                date: 'May 15, 2026',
+                image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80'
+              },
+              {
+                title: 'AI Automation Engines for Enterprise Growth',
+                excerpt: 'Efficiency is the new growth lever. Discover the AI architectures that save performance agencies 20+ hours per week.',
+                category: 'AI & Automation',
+                date: 'May 10, 2026',
+                image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80'
+              }
+            ].map((post, idx) => (
+              <Link
+                key={idx}
+                to={`/blog?post=${idx === 0 ? 'wordpress-seo-2026' : 'ai-tools-for-digital-growth'}`}
+                className="p-8 rounded-3xl bg-[#161616] border border-white/10 hover:border-[#FF6B00]/40 transition-all group"
+              >
+                <div className="aspect-[16/9] rounded-2xl overflow-hidden border border-white/10 mb-6 bg-[#121212]">
+                  <img src={post.image} alt={post.title} width="800" height="600" loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                </div>
+                <div className="flex items-center justify-between text-xs font-mono text-[#8B8B8B] mb-3">
+                  <span className="text-[#FFB347] uppercase">{post.category}</span>
+                  <span>{post.date}</span>
+                </div>
+                <h3 className="font-display text-xl font-bold uppercase text-white mb-3 group-hover:text-[#FF6B00] transition-colors">{post.title}</h3>
+                <p className="text-xs text-[#BFBFBF] leading-relaxed mb-6 line-clamp-3">{post.excerpt}</p>
+                <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#FF6B00] inline-flex items-center gap-2">
+                  <span>Read Full Article</span>
+                  <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================
+          CONTACT SECTION
+          ========================================= */}
+      <section className="py-28 bg-[#080808] border-t border-white/10 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-5">
+              <span className="text-[11px] font-mono font-bold text-[#FFB347] uppercase tracking-[0.3em] block mb-3">
+                START YOUR JOURNEY
+              </span>
+              <h2 className="font-display text-3xl sm:text-5xl font-black text-white uppercase tracking-tight leading-tight mb-6">
+                READY TO <span className="text-gradient-orange">TRANSFORM</span> YOUR DIGITAL PRESENCE?
+              </h2>
+              <p className="text-[#BFBFBF] text-base leading-relaxed mb-8">
+                Book a complimentary strategy session with our engineering team. We'll analyze your current setup and provide a roadmap for growth.
+              </p>
+              <div className="space-y-4">
+                <div className="flex items-center gap-3 text-sm text-[#BFBFBF]">
+                  <CheckCircle2 size={18} className="text-[#FF6B00] shrink-0" />
+                  <span>Free 100+ point technical audit</span>
+                </div>
+                <div className="flex items-center gap-3 text-sm text-[#BFBFBF]">
+                  <CheckCircle2 size={18} className="text-[#FF6B00] shrink-0" />
+                  <span>Custom growth strategy proposal</span>
+                </div>
+                <div className="flex items-center gap-3 text-sm text-[#BFBFBF]">
+                  <CheckCircle2 size={18} className="text-[#FF6B00] shrink-0" />
+                  <span>No commitment required</span>
+                </div>
+              </div>
+            </div>
+            <div className="lg:col-span-7">
+              <div className="p-8 sm:p-10 rounded-3xl bg-[#121212] border border-white/10 shadow-2xl">
+                <h3 className="font-display text-xl font-bold uppercase text-white mb-6">Send Us a Message</h3>
+                <form className="space-y-5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <input type="text" placeholder="Your Name" className="w-full bg-[#161616] border border-white/10 rounded-xl px-4 py-3.5 text-xs text-white focus:outline-none focus:border-[#FF6B00] transition-colors placeholder:text-neutral-600" />
+                    <input type="email" placeholder="Work Email" className="w-full bg-[#161616] border border-white/10 rounded-xl px-4 py-3.5 text-xs text-white focus:outline-none focus:border-[#FF6B00] transition-colors placeholder:text-neutral-600" />
+                  </div>
+                  <select className="w-full bg-[#161616] border border-white/10 rounded-xl px-4 py-3.5 text-xs text-white focus:outline-none focus:border-[#FF6B00] transition-colors">
+                    <option>I'm interested in...</option>
+                    <option>Web Design & Development</option>
+                    <option>SEO Services</option>
+                    <option>Google Ads</option>
+                    <option>AI Automation</option>
+                    <option>E-Commerce Solutions</option>
+                  </select>
+                  <textarea rows={3} placeholder="Tell us about your project..." className="w-full bg-[#161616] border border-white/10 rounded-xl p-4 text-xs text-white focus:outline-none focus:border-[#FF6B00] transition-colors placeholder:text-neutral-600" />
+                  <Link to="/contact" className="w-full block py-4 bg-gradient-to-r from-[#FF6B00] to-[#FF9D00] text-white rounded-xl text-xs font-mono font-bold uppercase tracking-widest text-center shadow-xl shadow-[#FF6B00]/20 hover:scale-[1.01] active:scale-[0.99] transition-all">
+                    Submit Inquiry
+                  </Link>
+                </form>
+              </div>
+            </div>
           </div>
         </div>
       </section>
