@@ -1,27 +1,19 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Helmet } from 'react-helmet-async';
-import { LayoutDashboard, Users, Globe, LogOut, Search, Filter, Shield, Lock, Settings, FileText, Share2, BarChart3, Menu, X, Calendar, BookOpen, MessageSquare, Image, Inbox, Mail, Sparkles } from 'lucide-react';
+import { LayoutDashboard, Users, Globe, LogOut, Search, Filter, Shield, Lock, Settings, Share2, BarChart3, Menu, X, Calendar, Inbox, Mail } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { cn } from '../lib/utils';
 
 import { LeadsModule } from '../components/admin/LeadsModule';
 import { SEOModule } from '../components/admin/SEOModule';
-import { ServicesModule } from '../components/admin/ServicesModule';
 import { AffiliateModule } from '../components/admin/AffiliateModule';
-import { AnalyticsModule } from '../components/admin/AnalyticsModule';
-import { PostsModule } from '../components/admin/PostsModule';
-import { BookingsModule } from '../components/admin/BookingsModule';
-import { ChatModule } from '../components/admin/ChatModule';
 import { SettingsModule } from '../components/admin/SettingsModule';
-import { MediaModule } from '../components/admin/MediaModule';
-import { FormSubmissionsModule } from '../components/admin/FormSubmissionsModule';
 import { SecurityModule } from '../components/admin/SecurityModule';
-import { AILogsModule } from '../components/admin/AILogsModule';
 import { DashboardModule } from '../components/admin/DashboardModule';
-import { PagesModule } from '../components/admin/PagesModule';
+import { FormSubmissionsModule } from '../components/admin/FormSubmissionsModule';
 
-type AdminTab = 'dashboard' | 'leads' | 'bookings' | 'submissions' | 'posts' | 'pages' | 'media' | 'chat' | 'analytics' | 'seo' | 'services' | 'affiliates' | 'settings' | 'security' | 'ai-logs';
+type AdminTab = 'dashboard' | 'leads' | 'submissions' | 'seo' | 'affiliates' | 'settings' | 'security';
 
 export const AdminDashboard = () => {
   const [activeTab, setActiveTab] = React.useState<AdminTab>('dashboard');
@@ -87,32 +79,19 @@ export const AdminDashboard = () => {
       category: 'Customers & CRM',
       items: [
         { id: 'leads', label: 'Leads', icon: <LayoutDashboard size={16} /> },
-        { id: 'bookings', label: 'Appointments', icon: <Calendar size={16} /> },
         { id: 'submissions', label: 'Submissions', icon: <Inbox size={16} /> },
       ]
     },
     {
-      category: 'Content Deck',
+      category: 'Marketing & Tools',
       items: [
-        { id: 'posts', label: 'Blog Posts', icon: <BookOpen size={16} /> },
-        { id: 'pages', label: 'Pages CMS', icon: <FileText size={16} /> },
-        { id: 'media', label: 'Media Library', icon: <Image size={16} /> },
-      ]
-    },
-    {
-      category: 'AI & Intelligence',
-      items: [
-        { id: 'chat', label: 'Support Chat', icon: <MessageSquare size={16} /> },
-        { id: 'analytics', label: 'Analytics', icon: <Globe size={16} /> },
-        { id: 'ai-logs', label: 'AI Logs', icon: <Sparkles size={16} /> },
-      ]
-    },
-    {
-      category: 'System Configuration',
-      items: [
-        { id: 'services', label: 'Services', icon: <Shield size={16} /> },
         { id: 'seo', label: 'SEO Settings', icon: <Search size={16} /> },
         { id: 'affiliates', label: 'Affiliates', icon: <Share2 size={16} /> },
+      ]
+    },
+    {
+      category: 'System',
+      items: [
         { id: 'settings', label: 'Settings', icon: <Settings size={16} /> },
         { id: 'security', label: 'Security', icon: <Lock size={16} /> },
       ]
@@ -127,16 +106,8 @@ export const AdminDashboard = () => {
     switch (activeTab) {
       case 'dashboard': return <DashboardModule />;
       case 'leads': return <LeadsModule leads={leads} loading={loading} />;
-      case 'bookings': return <BookingsModule />;
       case 'submissions': return <FormSubmissionsModule />;
-      case 'posts': return <PostsModule />;
-      case 'pages': return <PagesModule />;
-      case 'media': return <MediaModule />;
-      case 'chat': return <ChatModule />;
-      case 'analytics': return <AnalyticsModule leads={leads} />;
       case 'seo': return <SEOModule />;
-      case 'ai-logs': return <AILogsModule />;
-      case 'services': return <ServicesModule />;
       case 'affiliates': return <AffiliateModule />;
       case 'settings': return <SettingsModule />;
       case 'security': return <SecurityModule />;
@@ -357,5 +328,3 @@ export const AdminDashboard = () => {
     </div>
   );
 };
-
-

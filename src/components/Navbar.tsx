@@ -199,6 +199,7 @@ export const Navbar = () => {
     { name: 'Services', path: '/services', dropdown: true },
     { name: 'Portfolio', path: '/case-studies' },
     { name: 'Pricing', path: '/pricing' },
+    { name: 'Tools', path: '/tools' },
     { name: 'Blog', path: '/blog' },
     { name: 'About', path: '/about' },
   ];
